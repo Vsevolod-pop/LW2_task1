@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    srand(0);
+    srand(time(0));
     cout << "Выберите способ генерации массива. Для выбора способо введите его номер без пробелов:" << endl << "1. Генерация с помощью функции 'random'" << endl << "2. Ввод значений пользователем." << endl;
     string X;
     getline(cin, X);
@@ -45,11 +45,12 @@ int main()
     }
     int variant = stoi(X);
     int A[10];
+    int* sql = A;
     if (variant == 1)
     {
         for (int i = 0; i < 10; i++)
         {
-            A[i] = -1000 + rand() % ((1000+1)+1000);
+            *(sql+i) = -1000 + rand() % ((1000+1)+1000);
         }
     }
     else
@@ -95,13 +96,13 @@ int main()
                     }
                 }
             }
-            A[z] = stoi(X);
+            *(sql+z) = stoi(X);
         }
         
     }
     for (int i = 0; i < 10; i++)
     {
-        cout << "А[" << i << "]= " << A[i] << endl;
+        cout << "А[" << i << "]= " << *(sql+i) << endl;
     }
     int _2_ = 0;
     int _8_ = 0;
@@ -111,19 +112,19 @@ int main()
     int count20 = 0;
     for (int i = 0; i < 10; i++)
     {
-        if (A[i] % 8 == 0)
+        if (*(sql + i) % 8 == 0)
         {
-            _8_ += A[i];
+            _8_ += *(sql + i);
             count8++;
         }
-        if (A[i] > 2)
+        if (*(sql + i) > 2)
         {
-            _2_ += A[i];
+            _2_ += *(sql + i);
             count2++;
         }
-        if (A[i] < 20)
+        if (*(sql + i) < 20)
         {
-            _20_ += A[i];
+            _20_ += *(sql + i);
             count20++;
         }
     }
