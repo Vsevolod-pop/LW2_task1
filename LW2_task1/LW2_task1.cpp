@@ -7,102 +7,11 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
     srand(time(0));
-    cout << "Выберите способ генерации массива. Для выбора способо введите его номер без пробелов:" << endl << "1. Генерация с помощью функции 'random'" << endl << "2. Ввод значений пользователем." << endl;
-    string X;
-    getline(cin, X);
-    string _123_ = "12";
-    int f = 1;
-    while (true)
-    {
-        if (X.size() != 1)
-        {
-            cout << "Вы ввели Вы ввели не число или ввели его некорректно. Попробуйте еще раз ввести число без пробелов и других символов:" << endl;
-            getline(cin, X);
-            continue;
-        }
-        if (f == 0)
-        {
-            break;
-        }
-        for (int i = 0; i <= X.size(); i++)
-        {
-            f = 0;
-            int count = 0;
-            for (int y = 0; y <= _123_.size(); y++)
-            {
-                if (X[i] == _123_[y])
-                {
-                    count++;
-                }
-            }
-            if (count == 0)
-            {
-                cout << "Вы ввели не то число. Попробуйте еще раз ввести число без пробелов и других символов:" << endl;
-                getline(cin, X);
-                f = 1;
-            }
-        }
-    }
-    int variant = stoi(X);
     int A[10];
     int* sql = A;
-    if (variant == 1)
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            *(sql+i) = -1000 + rand() % ((1000+1)+1000);
-        }
-    }
-    else
-    {
-        string _123_ = "1234567890";
-        for (int z = 0; z < 10; z++)
-        {
-            cout << "Введите число: ";
-            string X;
-            getline(cin, X);
-            while (X.size() == 0)
-            {
-                cout << "Вы ничего не ввели, ведите число: ";
-                getline(cin, X);
-            }
-            int f = 1;
-            while (true)
-            {
-                if (f == 0)
-                {
-                    break;
-                }
-                for (int i = 0; i < X.size(); i++)
-                {
-                    f = 0;
-                    int count = 0;
-                    if (X[i] == '-' and X.size() != 1)
-                    {
-                        continue;
-                    }
-                    for (int y = 0; y < _123_.size(); y++)
-                    {
-                        if (X[i] == _123_[y])
-                        {
-                            count++;
-                        }
-                    }
-                    if (count == 0)
-                    {
-                        cout << "Вы ввели не число. Попробуйте еще раз ввести число без пробелов и других символов:" << endl;
-                        getline(cin, X);
-                        f = 1;
-                    }
-                }
-            }
-            *(sql+z) = stoi(X);
-        }
-        
-    }
     for (int i = 0; i < 10; i++)
     {
-        cout << "А[" << i << "]= " << *(sql+i) << endl;
+        *(sql + i) = -1000 + rand() / ((1000 + 1) + 1000);
     }
     int _2_ = 0;
     int _8_ = 0;
@@ -127,6 +36,10 @@ int main()
             _20_ += *(sql + i);
             count20++;
         }
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        cout << i + 1 << " элемент массива равен: " << *(sql + i) << endl;
     }
     cout << "Количество чисел больше 2: " << count2 << endl << "Сумма чисел больше 2: " << _2_ << endl;
     cout << "Количество чисел меньше 20: " << count20 << endl << "Сумма чисел меньше 20: " << _20_ << endl;
