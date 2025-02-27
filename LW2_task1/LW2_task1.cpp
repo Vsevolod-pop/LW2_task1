@@ -9,9 +9,12 @@ int main()
     srand(time(0));
     int A[10];
     int* sql = A;
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution <> distrib(-1000, 1000);
     for (int i = 0; i < 10; i++)
     {
-        *(sql + i) = -1000 + rand() / ((1000 + 1) + 1000);
+        *(sql + i) = distrib(gen);
     }
     int _2_ = 0;
     int _8_ = 0;
